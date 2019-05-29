@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery-3_Ninja-Cat</title>
+    <link rel="stylesheet" href="jQuery-3_Ninja-Cat.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+    </script>
+
+    <script>
+        $(document).ready(
+          function()
+          {
+            var change_img = function(img_id) {
+
+              // Copy (by reference) DOM-object corresponding to HTML element
+              var x = $(img_id);
+
+              // Grab path to the alternate image
+              var  y = x.attr('data-alt-src');
+
+              // Change the 'src' property of the element with id '#img-1'
+              x.attr('src', y);
+            } // lambda named change_img
+
+            $('#img-1').on('click', function(){
+              change_img('#img-1');
+            });
+
+            $('#img-2').on('click', function(){
+              change_img('#img-2');
+            });
+
+            $('#img-3').on('click', function(){
+              change_img('#img-3');
+            });
+
+            $('#img-4').on('click', function(){
+              change_img('#img-4');
+            });
+
+            $('#img-5').on('click', function(){
+              change_img('#img-5');
+            });
+          }
+        );
+    </script>
+
+  </head>
+  <body>
+
+    <main>
+      <!-- <img src="images/ninja0.png" alt=""> -->
+      <img src="images/cat0.png" data-alt-src="images/ninja0.png" id="img-1">
+      <img src="images/cat1.png" data-alt-src="images/ninja1.png" id="img-2">
+      <img src="images/cat2.png" data-alt-src="images/ninja2.png" id="img-3">
+      <img src="images/cat3.png" data-alt-src="images/ninja3.png" id="img-4">
+      <img src="images/cat4.png" data-alt-src="images/ninja4.png" id="img-5">
+    </main>
+
+  </body>
+</html>
