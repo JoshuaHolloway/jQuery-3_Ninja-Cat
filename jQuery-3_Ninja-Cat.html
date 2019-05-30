@@ -20,9 +20,9 @@
               // Grab path to the alternate image
               var  y = x.attr('data-alt-src');
 
-              // Change the 'src' property of the element with id '#img-1'
+              // Change the 'src' property of the element with id img_id
               x.attr('src', y);
-            } // lambda named change_img
+            } // change_img()
 
             $('#img-1').on('click', function(){
               change_img('#img-1');
@@ -40,8 +40,33 @@
               change_img('#img-4');
             });
 
-            $('#img-5').on('click', function(){
-              change_img('#img-5');
+            // $('#img-5').on('click', function(){
+            //   change_img('#img-5');
+            // });
+
+            // *******
+            // -Below I am trying to replace all 5 of the above call-backs with
+            //  a single one.
+            // -When the user pressed any image the .on() method is triggered.
+            // -Inside the anonomous function passed in as an arguement to .on()
+            //  the id of the element corresponding to the image clicked on
+            //  is grabbed and passed into the function I wrote to switch out
+            //  the image with the alternative one.
+            // -I'm currently trying to replace my working callback for the
+            //  bottom image with the code below.
+            // -The correct ID is grabbed, which I print to console for debugging.
+            // -But when I pass in that value into the function it doesn't seem to work.
+            // -I though maybe I needed to cast the variable to a string but
+            //  that doesn't seem to help.
+
+            // Upon click of any image do the following
+            $('img').on('click', function()
+            {
+              // Determin the ID corresponding to the image clicked on
+              var img_id = String($(this).attr('id'));
+
+              // Pass img_id into function
+              change_img(img_id);
             });
           }
         );
