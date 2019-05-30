@@ -9,10 +9,19 @@
     </script>
 
     <script>
+        //----------------------------------------------------------------------
         $(document).ready(
           function()
           {
-            var change_img = function(img_id) {
+            // Define function to abstract away details
+            var change_img = function(img_id)
+            {
+              // Input: ID corresponding to the image pressed
+              // Output: None (Undefined due to no return statement)
+              // Functionality:
+              //  -Change the src property of the image element corresponding
+              //   to the id passed in as the arguement to the value of the
+              //   data-alt-src property
 
               // Copy (by reference) DOM-object corresponding to HTML element
               var x = $(img_id);
@@ -20,56 +29,22 @@
               // Grab path to the alternate image
               var  y = x.attr('data-alt-src');
 
-              // Change the 'src' property of the element with id img_id
+              // Change the 'src' property of the element to id img_id
               x.attr('src', y);
             } // change_img()
-
-            $('#img-1').on('click', function(){
-              change_img('#img-1');
-            });
-
-            $('#img-2').on('click', function(){
-              change_img('#img-2');
-            });
-
-            $('#img-3').on('click', function(){
-              change_img('#img-3');
-            });
-
-            $('#img-4').on('click', function(){
-              change_img('#img-4');
-            });
-
-            // $('#img-5').on('click', function(){
-            //   change_img('#img-5');
-            // });
-
-            // *******
-            // -Below I am trying to replace all 5 of the above call-backs with
-            //  a single one.
-            // -When the user pressed any image the .on() method is triggered.
-            // -Inside the anonomous function passed in as an arguement to .on()
-            //  the id of the element corresponding to the image clicked on
-            //  is grabbed and passed into the function I wrote to switch out
-            //  the image with the alternative one.
-            // -I'm currently trying to replace my working callback for the
-            //  bottom image with the code below.
-            // -The correct ID is grabbed, which I print to console for debugging.
-            // -But when I pass in that value into the function it doesn't seem to work.
-            // -I though maybe I needed to cast the variable to a string but
-            //  that doesn't seem to help.
-
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // Upon click of any image do the following
             $('img').on('click', function()
             {
-              // Determin the ID corresponding to the image clicked on
-              var img_id = String($(this).attr('id'));
+              // Determine the ID corresponding to the image clicked on
+              var img_id = $(this).attr('id');
 
               // Pass img_id into function
-              change_img(img_id);
+              change_img('#' + img_id);
             });
           }
         );
+        //----------------------------------------------------------------------
     </script>
 
   </head>
